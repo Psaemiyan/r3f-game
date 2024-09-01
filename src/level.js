@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useState, useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+import { Float, Text, useGLTF } from '@react-three/drei'
 
 // geometry
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
@@ -17,6 +17,20 @@ export function BlockStart({position= [0, 0, 0]})
 {
     //floor
     return <group position={position}>
+        <Float floatIntensity={0.25} rotationIntensity={0.25}>
+        <Text
+        font="./bebas-neue-v9-latin-regular.woff"
+        scale={ 0.5 }
+        maxWidth={ 0.25 }
+        lineHeight={ 0.75 }
+        textAlign="right"
+        position={ [ 0.75, 0.65, 0 ] }
+        rotation-y={ - 0.25 }
+        >
+            Ready?
+            <meshBasicMaterial toneMapped={false}/>
+        </Text>
+        </Float>
         <mesh 
         geometry={boxGeometry} 
         material={floor1Material}
@@ -142,6 +156,14 @@ export function BlockEnd({position= [0, 0, 0]})
 
     //floor
     return <group position={position}>
+        <Text
+        font="./bebas-neue-v9-latin-regular.woff"
+        scale={ 1 }
+        position={[0, 2.25, 2]}
+        >
+            FINISHED!
+            <meshBasicMaterial toneMapped={false} />
+        </Text>
         <mesh 
         geometry={boxGeometry} 
         material={floor1Material}
@@ -192,7 +214,7 @@ function Bounds ({length=1})
 }
 
 // main level function
-export function Level({count = 5, types = [BlockSpinner, BlockAxe, BlockLimbo]})
+export function Level({count = 5, types = [BlockSpinner, BlockAxe, BlockLimbo], seed = 0})
 {
     const blocks = useMemo(() => 
     {
@@ -204,7 +226,7 @@ export function Level({count = 5, types = [BlockSpinner, BlockAxe, BlockLimbo]})
             blocks.push(type)
         }
         return blocks
-    }, [count, types])
+    }, [count, types, seed])
 
 
     return <>

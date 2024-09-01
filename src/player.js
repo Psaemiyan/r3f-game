@@ -38,33 +38,41 @@ export default function Player()
         body.current.setAngvel({ x: 0, y: 0, z: 0 })
     }
 
-    useEffect(() =>
-    {
-        const unsubscribeReset = useGame.subscribe(
-            (state) => {
-                if(state.phase === 'ready')
-                    reset()
-            }
-        )
 
-        const unsubscribeJump = subscribeKeys(
-            (state) => state.jump,
-            (value) => 
+    useEffect(() =>
+        {
+            const unsubscribeReset = useGame.subscribe(
+                (state) => state.phase,
+                (value) =>
+                {
+                    if(value === 'ready')
+                        reset()
+                }
+            )
+    
+            const unsubscribeJump = subscribeKeys(
+                (state) => state.jump,
+                (value) =>
                 {
                     if(value)
                         jump()
                 }
-        )
-
-        const unsubscribeAny = subscribeKeys(() => {start})
-
-        return () => 
+            )
+    
+            const unsubscribeAny = subscribeKeys(
+                () =>
+                {
+                    start()
+                }
+            )
+    
+            return () =>
             {
                 unsubscribeReset()
                 unsubscribeJump()
                 unsubscribeAny()
             }
-    }, [])
+        }, [])
     
 
     useFrame((state, delta) => 
@@ -82,23 +90,23 @@ export default function Player()
                 torque.x -= torqueStrength
             }
         
-            if(rightward)
-            {
-                impulse.x += impulseStrength
-                torque.z -= torqueStrength
-            }
+        if(rightward)
+        {
+            impulse.x += impulseStrength
+            torque.z -= torqueStrength
+        }
         
-            if(backward)
-            {
-                impulse.z += impulseStrength
-                torque.x += torqueStrength
-            }
-            
-            if(leftward)
-            {
-                impulse.x -= impulseStrength
-                torque.z += torqueStrength
-            }
+        if(backward)
+        {
+            impulse.z += impulseStrength
+            torque.x += torqueStrength
+        }
+        
+        if(leftward)
+        {
+            impulse.x -= impulseStrength
+            torque.z += torqueStrength
+        }
         
         body.current.applyImpulse(impulse)
         body.current.applyTorqueImpulse(torque)
