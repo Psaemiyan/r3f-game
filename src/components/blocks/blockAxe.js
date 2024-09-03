@@ -1,12 +1,8 @@
 import { useRef, useState } from "react"
 import { useFrame } from '@react-three/fiber'
 import { RigidBody } from '@react-three/rapier'
-import * as THREE from 'three'
-
-
-const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
-const floor2Material = new THREE.MeshStandardMaterial({ color: 'greenyellow' })
-const obstacleMaterial = new THREE.MeshStandardMaterial({ color: 'orangered' })
+import boxGeometry from "../../utils/geometry"
+import { floor2Material, obstacleMaterial } from "../../utils/materials"
 
 
 export default function BlockAxe({position= [0, 0, 0]}) 

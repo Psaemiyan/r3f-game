@@ -2,7 +2,7 @@ import { Physics } from '@react-three/rapier'
 import Lights from './Lights.jsx'
 import { Perf } from 'r3f-perf'
 import { Level } from './components/level.js'
-import Player from './player.js'
+import Player from './components/player/player.js'
 import useGame from './stores/useGame.js'
 
 export default function Experience()

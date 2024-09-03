@@ -1,9 +1,7 @@
 import { Float, Text } from '@react-three/drei'
-import * as THREE from 'three'
+import boxGeometry from '../../utils/geometry'
+import { floor1Material } from '../../utils/materials'
 
-
-const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
-const floor1Material = new THREE.MeshStandardMaterial({ color: 'limegreen' })
 
 export default function BlockStart({position= [0, 0, 0]}) 
 {

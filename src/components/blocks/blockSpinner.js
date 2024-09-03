@@ -1,13 +1,10 @@
 import { RigidBody } from '@react-three/rapier'
-import { BoxGeometry, MeshStandardMaterial} from 'three'
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import boxGeometry from '../../utils/geometry'
+import { floor2Material, obstacleMaterial } from '../../utils/materials'
 
-
-const boxGeometry = new BoxGeometry(1, 1, 1)
-const floor2Material = new MeshStandardMaterial({ color: 'greenyellow' })
-const obstacleMaterial = new MeshStandardMaterial({ color: 'orangered' })
 
 
 export default function BlockSpinner({position= [0, 0, 0]}) 

@@ -1,9 +1,7 @@
-import * as THREE from 'three'
 import { useGLTF, Text } from "@react-three/drei"
 import { RigidBody } from '@react-three/rapier'
-
-const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
-const floor1Material = new THREE.MeshStandardMaterial({ color: 'limegreen' })
+import boxGeometry from '../../utils/geometry'
+import { floor1Material } from '../../utils/materials'
 
 
 export default function BlockEnd({position= [0, 0, 0]}) 
