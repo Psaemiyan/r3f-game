@@ -6,8 +6,9 @@ import { floor1Material } from '../../utils/materials'
 
 export default function BlockEnd({position= [0, 0, 0]}) 
 {
-    const hamburger = useGLTF('./hamburger.glb')
-    hamburger.scene.children.forEach((mesh) => mesh.castShadow = true)
+
+    const trophy = useGLTF('./trophy_clash_royale.glb')
+    trophy.scene.children.forEach((mesh) => mesh.castShadow = true)
 
     //floor
     return <group position={position}>
@@ -26,7 +27,7 @@ export default function BlockEnd({position= [0, 0, 0]})
         scale={[4, 0.2, 4]}
         receiveShadow />
         <RigidBody type='fixed' colliders='hull' position={[0, 0.25, 0]} restitution={0.2} friction={0}>
-            <primitive object={hamburger.scene} scale={0.2}/>
+            <primitive object={trophy.scene} scale={0.5}/>
         </RigidBody>
     </group>
 }

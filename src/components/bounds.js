@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
-const wallMaterial = new THREE.MeshStandardMaterial({ color: 'pink' })
+const wallMaterial = new THREE.MeshStandardMaterial({ color: 'violet' })
 
 export default function Bounds ({length=1}) 
 {
