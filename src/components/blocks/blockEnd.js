@@ -1,6 +1,6 @@
 import { useGLTF, Text } from "@react-three/drei"
 import { RigidBody } from '@react-three/rapier'
-import boxGeometry from '../../utils/geometry'
+import {floorBoxGeometry} from '../../utils/geometry'
 import { floor1Material } from '../../utils/materials'
 
 
@@ -21,7 +21,7 @@ export default function BlockEnd({position= [0, 0, 0]})
             <meshBasicMaterial toneMapped={false} />
         </Text>
         <mesh 
-        geometry={boxGeometry} 
+        geometry={floorBoxGeometry} 
         material={floor1Material}
         position={[0, 0, 0]} 
         scale={[4, 0.2, 4]}

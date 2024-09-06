@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { useFrame } from '@react-three/fiber'
 import { RigidBody } from '@react-three/rapier'
-import boxGeometry from "../../utils/geometry"
+import {boxGeometry, floorBoxGeometry} from "../../utils/geometry"
 import { floor2Material, obstacleMaterial } from "../../utils/materials"
 
 
@@ -21,7 +21,7 @@ export default function BlockAxe({position= [0, 0, 0]})
     // first trap
     return <group position={position}>
         <mesh 
-        geometry={boxGeometry} 
+        geometry={floorBoxGeometry} 
         material={floor2Material}
         position={[0, -0.1, 0]} 
         scale={[4, 0.2, 4]}

@@ -5,6 +5,9 @@ import { Level } from './components/level.js'
 import Player from './components/player/player.js'
 import useGame from './stores/useGame.js'
 
+// import { OrbitControls } from '@react-three/drei'
+
+
 export default function Experience()
 {
     const blocksCount = useGame((state) => state.blocksCount)
@@ -12,8 +15,9 @@ export default function Experience()
 
 
     return <>
-        <color args={['#bdedfc']} attach='background' />
+        <color args={['#000000']} attach='background' />
         <Perf position='top-left'/>
+        {/* <OrbitControls makeDefault /> */}
         <Physics debug={false}>
             <Lights />
             <Level count={blocksCount}/>

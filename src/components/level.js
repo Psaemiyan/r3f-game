@@ -29,6 +29,7 @@ export function Level({count = 5, types = [BlockSpinner, BlockAxe, BlockLimbo], 
 
         <BlockEnd position={[0, 0, -(count + 1) * 4]}/>
 
+
         <Bounds length={count + 2}/>
     </>
 }

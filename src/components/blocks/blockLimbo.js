@@ -1,8 +1,8 @@
 import { useRef, useState } from "react"
 import { RigidBody } from "@react-three/rapier"
 import { useFrame } from '@react-three/fiber'
-import boxGeometry from '../../utils/geometry'
-import { floor2Material, obstacleMaterial } from "../../utils/materials"
+import {boxGeometry, floorBoxGeometry} from '../../utils/geometry'
+import { floor2Material, obstacleMaterial2 } from "../../utils/materials"
 
 
 export default function BlockLimbo({position= [0, 0, 0]}) 
@@ -21,7 +21,7 @@ export default function BlockLimbo({position= [0, 0, 0]})
     // first trap
     return <group position={position}>
         <mesh 
-        geometry={boxGeometry} 
+        geometry={floorBoxGeometry} 
         material={floor2Material}
         position={[0, -0.1, 0]} 
         scale={[4, 0.2, 4]}
@@ -30,7 +30,7 @@ export default function BlockLimbo({position= [0, 0, 0]})
         <RigidBody ref={obstacle} type='kinematicPosition' position={[0, 0.3, 0]} restitution={0.2} friction={0}>
             <mesh 
             geometry={boxGeometry}
-            material={obstacleMaterial}
+            material={obstacleMaterial2}
             scale={[3.5, 0.3, 0.3]}
             receiveShadow
             castShadow
