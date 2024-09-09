@@ -14,6 +14,7 @@ export function useCameraManagement() {
         const cameraTarget = new THREE.Vector3()
         cameraTarget.copy(bodyPosition)
         cameraTarget.y += 0.25
+        
 
         smoothedCameraPosition.lerp(cameraPosition, 5 * delta)
         smoothedCameraTarget.lerp(cameraTarget, 5 * delta)

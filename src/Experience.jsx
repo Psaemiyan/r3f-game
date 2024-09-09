@@ -1,11 +1,11 @@
 import { Physics } from '@react-three/rapier'
-import Lights from './Lights.jsx'
+import Lights from './components/Lights.jsx'
 import { Perf } from 'r3f-perf'
 import { Level } from './components/level.js'
 import Player from './components/player/player.js'
 import useGame from './stores/useGame.js'
-
-// import { OrbitControls } from '@react-three/drei'
+import GalaxyParticles from './components/GalaxyParticles.js'
+import { OrbitControls } from '@react-three/drei'
 
 
 export default function Experience()
@@ -22,6 +22,7 @@ export default function Experience()
             <Lights />
             <Level count={blocksCount}/>
             <Player />
+            <GalaxyParticles />
         </Physics>
 
     </>

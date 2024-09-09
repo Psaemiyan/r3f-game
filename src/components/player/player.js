@@ -37,7 +37,7 @@ export default function Player() {
         body.current.applyImpulse(impulse)
         body.current.applyTorqueImpulse(torque)
 
-        // Update Camera
+        // // Update Camera
         const bodyPosition = body.current.translation()
         updateCamera(state, bodyPosition, delta)
 
@@ -59,7 +59,7 @@ export default function Player() {
         >
             <mesh castShadow>
                 <icosahedronGeometry args={[0.3, 1]} />
-                <meshStandardMaterial flatShading color="mediumpurple" />
+                <meshStandardMaterial flatShading color="#fe019e" />
             </mesh>
         </RigidBody>
     )

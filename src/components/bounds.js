@@ -1,47 +1,48 @@
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { boxGeometry } from '../utils/geometry'
 import { wallMaterial } from '../utils/materials'
-import { useGLTF } from '@react-three/drei'
+import { useRef } from 'react';
+import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three'
+import { vertexShader } from '../shaders/walls/vertex.glsl.js';
+import { fragmentShader } from '../shaders/walls/fragment.glsl.js';
+
 
 export default function Bounds ({length=3}) 
 {
-    // const walls = useGLTF('./wall_08.glb')
-    // const rotationZ = THREE.MathUtils.degToRad(180)
-    // const rotationY = THREE.MathUtils.degToRad(-90)
-
-    // const col1 = new THREE.MeshStandardMaterial({ color: 'white'})
-    // const col2 = new THREE.MeshStandardMaterial({ color: 'blue'})
-    // const col3 = new THREE.MeshStandardMaterial({ color: 'yellow'})
-
+    const wallRef = useRef();
+    const texture = useLoader(THREE.TextureLoader, '/galaxy.jpg');
+  
+    // Custom shader material for the right wall
+    const shaderMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        uTexture: { value: texture },
+      },
+      vertexShader,
+      fragmentShader,
+    });
 
     return <>
-            {/* <RigidBody type='fixed' 
-            position={[-1, 1, -(length * 2) +3]}
-            restitution={0.2} 
-            friction={0}
-            rotation={[0, rotationY, rotationZ]}
-            >
-                <primitive object={walls.scene} scale={0.8}/>
-            </RigidBody> */}
-
-
 
         <RigidBody type='fixed' restitution={0.2} friction={0}>
+            {/* <mesh 
+            ref={wallRef}
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+            position={[2.15, 0.75, -(length * 2) + 2]}
+            geometry={boxGeometry}
+            material={shaderMaterial}
+            scale={[0.3, 1.5, 4 * length]}
+            castShadow
+            /> */}
+
             <mesh 
             position={[2.15, 0.75, -(length * 2) + 2]}
             geometry={boxGeometry}
-            material= {wallMaterial}
+            material={wallMaterial}
             scale={[0.3, 1.5, 4 * length]}
             castShadow
             />
-
-                {/* <primitive 
-                object={walls.scene} 
-                scale={0.5} 
-                position={[- 1.15, 0.75, -20]}
-                rotation={[0, -1.5, 0]}
-                /> */}
 
             <mesh 
             position={[-2.15, 0.75, -(length * 2) + 2]}
